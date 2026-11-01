@@ -15,7 +15,7 @@
 
 Std_ReturnType MCAL_RCC_InitSysClock(void){
 
-    std_ReturnType Local_FunctionStatus = E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
     #if RCC_SYSCLK == RCC_HSE
         #if RCC_CLK_BYPASS == RCC_RC_CLK_
@@ -99,7 +99,7 @@ Std_ReturnType MCAL_RCC_InitSysClock(void){
 }
 
 Std_ReturnType MCAL_RCC_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId){
-    std_ReturnType Local_FunctionStatus = E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
     switch(Copy_BusId){
         case RCC_AHB1:
             SET_BIT(RCC->AHB1ENR, Copy_PeripheralId);
@@ -125,7 +125,7 @@ Std_ReturnType MCAL_RCC_EnablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId){
 }
 
 Std_ReturnType MCAL_RCC_DisablePeripheral(u8 Copy_BusId, u8 Copy_PeripheralId){
-    std_ReturnType Local_FunctionStatus = E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
     switch(Copy_BusId){
         case RCC_AHB1:
             CLR_BIT(RCC->AHB1ENR, Copy_PeripheralId);

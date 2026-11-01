@@ -30,7 +30,7 @@ typedef struct
     volatile u32 BDCR;        /* Offset: 0x70 */
     volatile u32 CSR;         /* Offset: 0x74 */
 } RCC_RegDef_t;    
-#define RCC_BASE_ADDRESS 0x40023800 /**< Base address of the RCC peripheral. */
+#define RCC_BASE_ADDRESS 0x40023800U /**< Base address of the RCC peripheral. */
 #define RCC ((RCC_RegDef_t *)RCC_BASE_ADDRESS) /**< Pointer to the RCC peripheral structure. */
  
 

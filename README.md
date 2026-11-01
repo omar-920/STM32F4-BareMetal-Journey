@@ -21,7 +21,7 @@ The project follows a layered structure to keep hardware access, reusable utilit
 | `HAL/` | Higher-level drivers that build on the MCAL and provide convenient interfaces for external hardware. |
 | `APP/` | Application code that brings the drivers together into demonstrations and firmware behavior. |
 
-The library is being developed incrementally. **RCC is the first driver in `MCAL/`;** the other layers are reserved for upcoming work.
+The library is being developed incrementally. The current MCAL drivers are **RCC** and **GPIO**; the other layers are reserved for upcoming work.
 
 ## Learning Journey
 
@@ -33,16 +33,32 @@ The library is being developed incrementally. **RCC is the first driver in `MCAL
   - Added pre-build configuration options for HSI, HSE, PLL, and AHB/APB bus prescalers.
   - Documented the driver API and configuration with Doxygen-style tags such as `@brief` and `@details`.
   - Established an initial MCAL interface for system clock initialization and peripheral clock enable/disable operations.
+- [x] **Milestone 2: GPIO (General-Purpose I/O) Driver**
+  - Added register definitions and pin configuration for GPIO ports A, B, and C.
+  - Supports input, output, alternate-function, and analog modes; push-pull/open-drain output types; four speed settings; and pull-up/pull-down configuration.
+  - Added APIs to initialize a pin, set or read its value, and toggle its output.
+  - GPIO port clocks must be enabled through the RCC driver before using the GPIO APIs.
 
 Each milestone is an opportunity to understand the hardware more deeply while improving the structure and quality of the driver library.
 
 ## Upcoming Milestones
 
-- [ ] **GPIO Driver** — pin modes, output types, speed, pull configurations, and I/O operations.
 - [ ] **NVIC Driver** — interrupt enable/disable, priority configuration, and pending-state control.
 - [ ] **EXTI Driver** — external interrupt/event configuration and trigger selection.
 
 More drivers and application examples will be added as the journey progresses.
+
+## Current Driver APIs
+
+| Driver | API | Description |
+| --- | --- | --- |
+| RCC | `MCAL_RCC_InitSysClock()` | Initializes the system clock using the compile-time settings in `MCAL/RCC/RCC_config.h`. |
+| RCC | `MCAL_RCC_EnablePeripheral()` / `MCAL_RCC_DisablePeripheral()` | Enables or disables a peripheral clock on an RCC bus. |
+| GPIO | `MCAL_GPIO_Init()` | Configures a pin using `GPIO_PinConfig_t`. |
+| GPIO | `MCAL_GPIO_SetPinValue()` / `MCAL_GPIO_GetPinValue()` | Writes or reads a pin value. |
+| GPIO | `MCAL_GPIO_TogglePin()` | Toggles a pin's output state. |
+
+The GPIO driver currently exposes ports A, B, and C (`GPIO_PORT_A` through `GPIO_PORT_C`) and pins 0–15.
 
 ## Getting Started
 

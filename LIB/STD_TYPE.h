@@ -23,10 +23,10 @@ typedef signed long s64;
 typedef float f32;
 typedef double f64;
 
-typedef u8 std_ReturnType;
+typedef u8 Std_ReturnType;
 
-#define E_NOT_OK    (std_ReturnType) 0
-#define E_OK        (std_ReturnType) 1
+#define E_NOT_OK    (Std_ReturnType) 0
+#define E_OK        (Std_ReturnType) 1
 
 
 #endif /* STD_TYPE_H_ */
